@@ -27,6 +27,12 @@ resource "google_project_service" "cloudbuild_api" {
   service = "cloudbuild.googleapis.com"
 }
 
+# enable bigquery api
+resource "google_project_service" "cloudfunctions_api" {
+  project = google_project.create_project.project_id
+  service = "cloudfunctions.googleapis.com"
+}
+
 
 ###### Ressource GCS #######
 # Creation d'une ressource bucket qui contiendra les différents fichier
@@ -69,14 +75,14 @@ resource "google_storage_bucket" "bucket-auto-expire-handled" {
 # creation d'un objet dans le bucket
 resource "google_storage_bucket_object" "source_code" {
   name   = "src_code/code.zip"
-  source = "../src/code.zip"
+  source = "../../../src/code.zip"
   bucket = google_storage_bucket.bucket-auto-expire-handled.name
 }
 
 # creation d'un objet dans le bucket
 resource "google_storage_bucket_object" "archive" {
-  name   = "archive/code.zip"
-  source = "../src/code.zip"
+  name   = "archive/"
+  source = "../../../src/code.zip"
   bucket = google_storage_bucket.bucket-auto-expire-handled.name
 }
 
@@ -114,7 +120,7 @@ resource "google_bigquery_dataset" "dataset_sl_viz" {
 }
 
 
-###### Ressource Cloud function #######
+###### Ressource Cloud function  #######
 resource "google_cloudfunctions_function" "function_pdl" {
   project       = google_project.create_project.project_id
   name        = "func-pdl"
@@ -130,6 +136,12 @@ resource "google_cloudfunctions_function" "function_pdl" {
   available_memory_mb   = 512
   source_archive_bucket = google_storage_bucket.bucket-auto-expire-handled.name
   source_archive_object = google_storage_bucket_object.source_code.name
+
+  environment_variables = {
+    PROJECT_ID = google_project.create_project.project_id
+    BUCKET_NAME_IN  = google_storage_bucket.bucket-auto-expire-in.name
+    BUCKET_NAME_HANDLED = google_storage_bucket.bucket-auto-expire-handled.name
+  }
   
   entry_point           = "process"
 }

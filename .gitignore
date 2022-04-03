@@ -1,5 +1,15 @@
 # custom
 .saKey/
+# terraform
+terraform_sripts/.terraform.lock.hcl
+terraform_sripts/.terraform/
+terraform_sripts/terraform.tfstate
+terraform_sripts/terraform.tfstate.backup
+
+# environnement virtuel
+pdl_env/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

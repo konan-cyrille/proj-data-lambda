@@ -1,0 +1,18 @@
+steps:
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    args: ["./shell_scripts/deploy_cloud_function.sh"]
+    waitFor: ["-"]
+
+# steps:
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk' #'gcr.io/cloud-builders/gcloud'
+#   args:
+#   - gcloud
+#   - functions
+#   - deploy
+#   - func-pdl
+#   - --region=europe-west1
+#   - --source=.
+#   - --trigger-bucket=bkt-pdl-032022-dev-in
+#   - --runtime=python38
+
+#gcloud functions deploy func-pdl --region=europe-west1 --trigger-bucket=bkt-pdl-032022-dev-in --runtime=python38 --source=src/flat_file_ingestor/
