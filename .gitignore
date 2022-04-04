@@ -5,10 +5,14 @@ terraform_sripts/.terraform.lock.hcl
 terraform_sripts/.terraform/
 terraform_sripts/terraform.tfstate
 terraform_sripts/terraform.tfstate.backup
-
+terraform_sripts/dev/
+terraform_sripts/rec/
+terraform_sripts/prod/
 # environnement virtuel
 pdl_env/
 
+#divers
+liens_utiles.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
