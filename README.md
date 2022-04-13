@@ -1,4 +1,4 @@
-Un data pipeline permettant d'ingérer des fichiers csv et json dans des table d'un dataset bigquery.
+Un data pipeline permettant d'ingérer des fichiers csv et json dans des tables d'un dataset bigquery.
 Une cloud function se charge de lire le fichier et le charge dans une table du dataset raw dans bigquery
 
 Pour utiliser ce code vous devez disposer: 
@@ -30,4 +30,16 @@ Une fois le projet crée allez sur [cloud console](https://console.cloud.google.
 
 Vérifier que le projet et les ressources ont étés crées avec succès.
 
-###Quelques configuration manuelles avant de tester le projet
+### Quelques configuration manuelles avant de tester le projet
+
+#### Attribution rôles
+Dans le menu (burger icon) de la console google cloud,
+- cliquez sur la ressource **Cloud Build**
+- Dans le menu a gauche de la fenêtre qui s'ouvre cliqué sur paramêtre (setting)
+- Dans l'onglet compte de service, Activez les services GCP suivant
+    - cloud functions
+    - service account
+
+#### connecter un repos distant (*github, bitbucket*)
+
+### Exemple du fichier en sortie

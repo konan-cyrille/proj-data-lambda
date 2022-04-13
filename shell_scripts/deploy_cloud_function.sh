@@ -19,6 +19,7 @@ gcloud functions \
     deploy ${FUNCTION_NAME} \
     --project="${PROJECT_ID}-${ENVIRONMENT}" \
     --region=${PROJECT_REGION} \
+    --entry-point=${cloud_function_entry_point}\
     --trigger-bucket=${BUCKET_TO_WATCH} \
     --runtime=python38 \
     --source=$SOURCE_DIR

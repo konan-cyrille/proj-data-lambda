@@ -11,8 +11,13 @@ terraform_sripts/prod/
 # environnement virtuel
 pdl_env/
 
+# dissier notebooks
+notebooks/
+
 #divers
 liens_utiles.txt
+
+src/code.zip
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

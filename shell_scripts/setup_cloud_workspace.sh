@@ -16,15 +16,15 @@ echo "Variable"
 echo ${PROJECT_ID}
 echo ${ENVIRONMENT}
 
-if [ -d "$root_path/src" ]; then
-    # sudo apt-get install zip -y
-    echo "suppression du fichier code.zip"
-    rm $root_path/src/code.zip
-    echo "Compression du contenu du dossier src"
-    cd $root_path/src/flat_file_ingestor
-    zip -r "../code.zip" .
-    cd $root_path
-fi;
+# if [ -d "$root_path/src" ]; then
+#     # sudo apt-get install zip -y
+#     echo "suppression du fichier code.zip"
+#     rm $root_path/src/code.zip
+#     echo "Compression du contenu du dossier src"
+#     cd $root_path/src/flat_file_ingestor
+#     zip -r "../code.zip" .
+#     cd $root_path
+# fi;
 
 if [ -d "$root_path/terraform_sripts" ]; then
     pwd
@@ -50,6 +50,7 @@ if [ -d "$root_path/terraform_sripts" ]; then
         cp main.tf variables.tf "${ENVIRONMENT}/${PROJECT_ID}-${ENVIRONMENT}"
         cd "$root_path/terraform_sripts/${ENVIRONMENT}/${PROJECT_ID}-${ENVIRONMENT}"
         # exécute le main.tf pour créer les ressource dans le cloud
+        terraform init
         terraform apply -auto-approve
         # # remet toi a la racine du projet
         # cd $root_path
